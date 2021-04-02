@@ -17,38 +17,16 @@ html(lang="en")
           button.edit-button.edit-button--solid(role='menuitem') New
         nav
           ul.notes-list
-            li
-              .sidebar-note-list-item
-                header.sidebar-note-header
-                  strong I wrote this note today
-                  small 6:07 AM
-                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
-                button.sidebar-note-toggle-expand
-                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
-            li
-              .sidebar-note-list-item
-                header.sidebar-note-header
-                  strong A note with a very long title because sometimes you need more words
-                  small 2/3/21
-                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
-                button.sidebar-note-toggle-expand
-                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
-            li
-              .sidebar-note-list-item
-                header.sidebar-note-header
-                  strong Make a thing
-                  small 3/15/21
-                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
-                button.sidebar-note-toggle-expand
-                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
-            li
-              .sidebar-note-list-item
-                header.sidebar-note-header
-                  strong Meeting Notes
-                  small 3/10/21
-                button.sidebar-note-open(style='border:1px solid var(--primary-border); background-color:var(--tertiary-blue);') Open note for preview
-                button.sidebar-note-toggle-expand
-                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+            each note in notes
+              li
+                .sidebar-note-list-item
+                  header.sidebar-note-header
+                    strong #{note.title}
+                    small #{note.createdAt}
+                  button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
+                  button.sidebar-note-toggle-expand
+                    img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+
       section.col.note-viewer
         .note
           .note-header
