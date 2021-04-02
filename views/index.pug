@@ -1,0 +1,65 @@
+doctype html
+html(lang="en")
+  head
+    title htmx-notes
+    link(href="/styles.css", rel="stylesheet")
+  body
+    .main
+      section.col.sidebar
+        section.sidebar-header
+          img.logo(src='logo.svg' alt='' role='presentation' width='22px' height='20px')
+          strong htmx Notes
+        section.sidebar-menu(role='menubar')
+          form.search(role='search')
+            label.offscreen(for='sidebar-search-input') Search for a note by title
+            input#sidebar-search-input(placeholder='Search' value='')
+            .spinner.false(role='progressbar' aria-busy='false')
+          button.edit-button.edit-button--solid(role='menuitem') New
+        nav
+          ul.notes-list
+            li
+              .sidebar-note-list-item
+                header.sidebar-note-header
+                  strong I wrote this note today
+                  small 6:07 AM
+                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
+                button.sidebar-note-toggle-expand
+                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+            li
+              .sidebar-note-list-item
+                header.sidebar-note-header
+                  strong A note with a very long title because sometimes you need more words
+                  small 2/3/21
+                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
+                button.sidebar-note-toggle-expand
+                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+            li
+              .sidebar-note-list-item
+                header.sidebar-note-header
+                  strong Make a thing
+                  small 3/15/21
+                button.sidebar-note-open(style='border: 1px solid transparent;') Open note for preview
+                button.sidebar-note-toggle-expand
+                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+            li
+              .sidebar-note-list-item
+                header.sidebar-note-header
+                  strong Meeting Notes
+                  small 3/10/21
+                button.sidebar-note-open(style='border:1px solid var(--primary-border); background-color:var(--tertiary-blue);') Open note for preview
+                button.sidebar-note-toggle-expand
+                  img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+      section.col.note-viewer
+        .note
+          .note-header
+            h1.note-title Meeting Notes
+            .note-menu(role='menubar')
+              small.note-updated-at(role='status') Last updated on 10 Mar 2021 at 7:46 PM
+              button.edit-button.edit-button--outline(role='menuitem') Edit
+          .note-preview
+            .text-with-markdown
+              p
+                | This is an example note. It contains 
+                strong Markdown
+                | !
+
