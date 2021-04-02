@@ -1,0 +1,8 @@
+.note
+  .note-header
+    h1.note-title #{note.title}
+    .note-menu(role='menubar')
+      small.note-updated-at(role='status') Last updated on 10 Mar 2021 at 7:46 PM
+      button.edit-button.edit-button--outline(role='menuitem') Edit
+  .note-preview
+    .text-with-markdown !{markdown}
