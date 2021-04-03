@@ -1,9 +1,14 @@
 .note-editor
   form.note-editor-form(autocomplete='off', hx-post="/note", hx-target="#note-viewer", hx-trigger="click from:#btn-done")
     label.offscreen(for='note-title-input') Enter a title for your note
-    input#note-title-input(type='text' value='Untitled', name="title")
+    input#note-title-input(
+    type='text' 
+    value='Untitled', 
+    name="title"
+    _="on keyup put me.value into #note-title.innerHTML"
+    )
     label.offscreen(for='note-body-input') Enter the body for your note
-    textarea#note-body-input(name="draft", hx-post="/preview", hx-trigger="keyup changed delay:500ms", hx-target="#markdown")
+    textarea#note-body-input(name="draft", hx-post="/preview", hx-trigger="keyup changed delay:500ms", hx-target="#markdown", hx-indicator=".htmx-indicator")
   .note-editor-preview
     .note-editor-menu(role='menubar')
       button#btn-done.note-editor-done(
@@ -12,7 +17,10 @@
         img(src='/images/checkmark.svg' alt='' role='presentation' width='14px' height='10px')
         | Done
     .label.label--preview(role='status') Preview
-    h1.note-title Untitled
+    h1#note-title.note-title Untitled
     .note-preview
       #markdown.text-with-markdown
+        .htmx-indicator
+          .spinner-border(role="status")
+            span.visually-hidden Loading...
 

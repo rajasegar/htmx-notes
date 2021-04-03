@@ -1,0 +1,17 @@
+ul#notes-list.notes-list(hx-swap-oob="true")
+  each note in notes
+    li
+      .sidebar-note-list-item
+        header.sidebar-note-header
+          strong #{note.title}
+          small #{note.createdAt}
+        button.sidebar-note-open(
+          hx-get="/note/" + note.id, 
+          style='border: 1px solid transparent;'
+          hx-target="#note-viewer",
+          hx-indicator=".htmx-indicator"
+          ) Open note for preview
+        - var toggleHidden = `on click toggle .hidden on #note-excerpt-${note.id}`
+        button.sidebar-note-toggle-expand(_=toggleHidden)
+          img(id='expand-btn-' + note.id , src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+        p.sidebar-note-excerpt.hidden(id="note-excerpt-" + note.id) #{note.content}

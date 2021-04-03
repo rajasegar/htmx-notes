@@ -10,7 +10,7 @@ module.exports = [
     title: 'Make a thing',
     createdAt: '6:07 AM',
     content: `It's very easy to make some words **bold** and other words *italic* with
-Markdown. You can even [link to React's website!](https://www.reactjs.org).`,
+Markdown. You can even [link to htmx's website!](https://htmx.org).`,
   },
   {
     id: 3,
@@ -19,10 +19,10 @@ Markdown. You can even [link to React's website!](https://www.reactjs.org).`,
     content: `You can write all kinds of [amazing](https://en.wikipedia.org/wiki/The_Amazing)
 notes in this app! These note live on the server in the \`notes\` folder.
 
-![This app is powered by React](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/React_Native_Logo.png/800px-React_Native_Logo.png)`,
+![This app is powered by htmx](images/htmx-logo.png)`,
   },
   {
-    id: 1,
+    id: 4,
     title: 'I wrote this note today',
     createdAt: '6:07 AM',
     content: 'It was an excellent note'

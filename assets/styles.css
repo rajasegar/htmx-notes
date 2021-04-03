@@ -232,7 +232,7 @@ hr {
   background: var(--primary-blue);
   color: var(--white);
   border: none;
-  margin-inlinestart: 6px;
+  margin-inline-start: 6px;
   transition: all 0.2s ease-in-out;
 }
 .edit-button--solid:hover {
@@ -389,6 +389,9 @@ ul.notes-list {
   color: var(--secondary-text);
   position: relative;
   animation: slideIn 100ms;
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search input {
@@ -691,3 +694,31 @@ ul.notes-list {
   }
 }
 
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: .25em solid currentColor;
+  border-right-color: currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: .75s linear infinite spinner-border;
+  animation: .75s linear infinite spin;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.hidden {
+  display: none;
+}

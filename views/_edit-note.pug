@@ -1,0 +1,27 @@
+.note-editor
+  form.note-editor-form(autocomplete='off', hx-put="/note/" + note.id, hx-target="#note-viewer", hx-trigger="click from:#btn-done")
+    label.offscreen(for='note-title-input') Enter a title for your note
+    input#note-title-input(
+    type='text' 
+    value=note.title, 
+    name="title"
+    _="on keyup put me.value into #note-title.innerHTML"
+    )
+    label.offscreen(for='note-body-input') Enter the body for your note
+    textarea#note-body-input(name="draft", hx-post="/preview", hx-trigger="keyup changed delay:500ms", hx-target="#markdown") !{note.content}
+  .note-editor-preview
+    .note-editor-menu(role='menubar')
+      button#btn-done.note-editor-done(
+        type="submit", 
+        )
+        img(src='/images/checkmark.svg' alt='' role='presentation' width='14px' height='10px')
+        | Done
+      button.note-editor-delete(role='menuitem', hx-delete="/note/" + note.id, hx-target="#note-viewer")
+        img(src='/images/cross.svg' alt='' role='presentation' width='10px' height='10px')
+        | Delete
+
+    .label.label--preview(role='status') Preview
+    h1#note-title.note-title #{note.title}
+    .note-preview
+      #markdown.text-with-markdown !{markdown}
+

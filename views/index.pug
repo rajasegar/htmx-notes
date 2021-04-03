@@ -7,32 +7,27 @@ html(lang="en")
     .main
       section.col.sidebar
         section.sidebar-header
-          img.logo(src='logo.svg' alt='' role='presentation' width='22px' height='20px')
+          img.logo(src='/images/logo.png' alt='' role='presentation' width='22px' height='20px')
           strong htmx Notes
         section.sidebar-menu(role='menubar')
           form.search(role='search')
             label.offscreen(for='sidebar-search-input') Search for a note by title
-            input#sidebar-search-input(placeholder='Search' value='')
-            .spinner.false(role='progressbar' aria-busy='false')
+            input#sidebar-search-input(
+            placeholder='Search' 
+            name="query" 
+            value='', 
+            hx-post="/search", 
+            hx-trigger="keyup delay:500ms"
+            _="on htmx:beforeSend add .spinner--active to #search-spinner on htmx:afterOnLoad remove .spinner--active from #search-spinner"
+            )
+            #search-spinner.spinner(role='progressbar' aria-busy='true')
           button.edit-button.edit-button--solid(role='menuitem', hx-get="/new", hx-target="#note-viewer") New
         nav
-          ul.notes-list
-            each note in notes
-              li
-                .sidebar-note-list-item
-                  header.sidebar-note-header
-                    strong #{note.title}
-                    small #{note.createdAt}
-                  button.sidebar-note-open(
-                    hx-get="/note/" + note.id, 
-                    style='border: 1px solid transparent;'
-                    hx-target="#note-viewer"
-                    ) Open note for preview
-                  button.sidebar-note-toggle-expand
-                    img(src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
+          include _notes-list
 
       section#note-viewer.col.note-viewer
-        .note--empty-state
-          span.note-text--empty-state
-            | Click a note on the left to view something! 🥺
+        include _loading
+        include _empty
+
     script(src="https://unpkg.com/htmx.org@1.3.1")
+    script(src="https://unpkg.com/hyperscript.org@0.0.8")
