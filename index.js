@@ -98,8 +98,7 @@ app.post('/search', (req, res) => {
   const template = pug.compileFile('views/_notes-list.pug');
   let markup = template({ notes: results });
   res.send(markup);
-
-})
+});
 
 
 app.listen(PORT);
