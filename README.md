@@ -5,6 +5,8 @@ This is a demo note-taking app using markdown inspired by the [React Server Comp
 
 [Demo](https://htmx-notes.herokuapp.com)
 
+![htmx notes demo](htmx-notes.gif)
+
 ## Local development
 Clone the git repo, install the dependencies and start the server.
 ```
