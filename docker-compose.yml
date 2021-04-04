@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  htmx-notes:
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./assets:/opt/htmx-notes/assets
+      - ./data:/opt/htmx-notes/data
+      - ./views:/opt/htmx-notes/views
+      - ./index.js:/opt/htmx-notes/index.js
+
