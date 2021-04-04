@@ -1,7 +1,7 @@
 ul#notes-list.notes-list(hx-swap-oob="true")
   each note in notes
     li
-      .sidebar-note-list-item
+      .sidebar-note-list-item(_="on load set excerpt to false")
         header.sidebar-note-header
           strong #{note.title}
           small #{note.createdAt}
@@ -11,7 +11,10 @@ ul#notes-list.notes-list(hx-swap-oob="true")
           hx-target="#note-viewer",
           hx-indicator=".htmx-indicator"
           ) Open note for preview
-        - var toggleHidden = `on click toggle .hidden on #note-excerpt-${note.id}`
-        button.sidebar-note-toggle-expand(_=toggleHidden)
+        button.sidebar-note-toggle-expand(
+          _="on click toggle .hidden on #note-excerpt-" + note.id + 
+        " if #expand-btn-" + note.id + ".src.includes('chevron-up') then put '/images/chevron-down.svg' into #expand-btn-" + note.id + ".src" +
+        " else put '/images/chevron-up.svg' into #expand-btn-" + note.id + ".src end"
+        )
           img(id='expand-btn-' + note.id , src='/images/chevron-up.svg' alt='Expand' width='10px' height='10px')
         p.sidebar-note-excerpt.hidden(id="note-excerpt-" + note.id) #{note.content}
