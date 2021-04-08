@@ -7,7 +7,7 @@ html(lang="en")
     .main
       section.col.sidebar
         section.sidebar-header
-          img.logo(src='/images/logo.png' alt='' role='presentation' width='22px' height='20px')
+          img.logo(src='/images/logo.png' alt='' role='presentation' width='22px' )
           strong htmx Notes
         section.sidebar-menu(role='menubar')
           form.search(role='search')
@@ -20,7 +20,7 @@ html(lang="en")
             hx-trigger="keyup delay:500ms"
             _="on htmx:beforeSend add .spinner--active to #search-spinner on htmx:afterOnLoad remove .spinner--active from #search-spinner"
             )
-            #search-spinner.spinner(role='progressbar' aria-busy='true')
+            #search-spinner.spinner(role='progressbar', aria-label="search loading spinner" aria-busy='true')
           button.edit-button.edit-button--solid(role='menuitem', hx-get="/new", hx-target="#note-viewer") New
         nav
           include _notes-list
