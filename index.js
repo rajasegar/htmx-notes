@@ -3,6 +3,7 @@ const pug = require('pug');
 const bodyParser = require('body-parser');
 const marked = require('marked');
 const { v4 } = require('uuid');
+const compression = require('compression');
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,6 +15,7 @@ app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('assets'));
+app.use(compression());
 
 app.get('/', (req, res) => {
   res.render('index', { notes });
